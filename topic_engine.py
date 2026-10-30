@@ -8,7 +8,7 @@ def get_topic():
         return {"title": "How US Plans to Block China's Internet Cables in 2026", "thumbnail_text": "INTERNET WAR?", "description": "US vs China undersea cable battle.", "keywords": ["geopolitics", "USA", "China"], "hook": "The next world war won't start with nukes, but with a cable cut?"}
     
     genai.configure(api_key=api_key)
-    model = genai.GenerativeModel('gemini-1.5-flash-latest')
+    model = genai.GenerativeModel('gemini-1.5-flash')
     prompt = 'You are a viral YouTube strategist for US audience for channel VAYNZOX. Niche: Merge GEOPOLITICS + FUTURE SCIENCE/DIGITAL TECH. Give 1 topic TODAY. US-centric, high CPM. Return ONLY valid JSON: {"title": "...", "thumbnail_text": "2-3 WORDS CAPS", "description": "SEO 2 lines", "keywords": ["...", "..."], "hook": "first line"} Title 45-65 chars. No extra text.'
     try:
         res = model.generate_content(prompt)
