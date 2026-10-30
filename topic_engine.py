@@ -1,12 +1,14 @@
-import os, json, google.generativeai as genai
+import os
+import json
+import google.generativeai as genai
 
 def get_topic():
     api_key = os.getenv("GEMINI_API_KEY")
     if not api_key:
-        return {"title": "How US Plans to Block China's Internet Cables in 2026", "thumbnail_text": "INTERNET WAR?", "description": "US vs China undersea cable battle that could start WW3.", "keywords": ["geopolitics", "USA", "China"], "hook": "The next world war won't start with nukes, but with a cable cut?"}
+        return {"title": "How US Plans to Block China's Internet Cables in 2026", "thumbnail_text": "INTERNET WAR?", "description": "US vs China undersea cable battle.", "keywords": ["geopolitics", "USA", "China"], "hook": "The next world war won't start with nukes, but with a cable cut?"}
     
     genai.configure(api_key=api_key)
-    model = genai.GenerativeModel('gemini-2.0-flash')
+    model = genai.GenerativeModel('gemini-1.5-flash-latest')
     prompt = 'You are a viral YouTube strategist for US audience for channel VAYNZOX. Niche: Merge GEOPOLITICS + FUTURE SCIENCE/DIGITAL TECH. Give 1 topic TODAY. US-centric, high CPM. Return ONLY valid JSON: {"title": "...", "thumbnail_text": "2-3 WORDS CAPS", "description": "SEO 2 lines", "keywords": ["...", "..."], "hook": "first line"} Title 45-65 chars. No extra text.'
     try:
         res = model.generate_content(prompt)
