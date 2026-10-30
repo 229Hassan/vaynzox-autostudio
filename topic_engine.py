@@ -9,7 +9,7 @@ def get_topic():
     client = genai.Client(api_key=api_key)
     prompt = 'You are a viral YouTube strategist for US audience for channel VAYNZOX. Niche: Merge GEOPOLITICS + FUTURE SCIENCE/DIGITAL TECH. Give 1 topic TODAY. US-centric, high CPM. Return ONLY valid JSON: {"title": "...", "thumbnail_text": "2-3 WORDS CAPS", "description": "SEO 2 lines", "keywords": ["...", "..."], "hook": "first line"} Title 45-65 chars. No extra text.'
     try:
-        res = client.models.generate_content(model='gemini-2.0-flash', contents=prompt)
+        res = client.models.generate_content(model='gemini-2.5-flash', contents=prompt)
         text = res.text.replace('json','').replace('','').strip()
         return json.loads(text)
     except Exception as e:
