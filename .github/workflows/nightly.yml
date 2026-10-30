@@ -14,7 +14,11 @@ jobs:
         with:
           python-version: '3.11'
       - run: sudo apt-get update && sudo apt-get install -y ffmpeg
-      - run: pip install -r requirements.txt
+      - name: Install Dependencies
+        run: |
+          pip install --upgrade pip
+          pip uninstall -y google-generativeai google-generative-ai 2>/dev/null || true
+          pip install --no-cache-dir -r requirements.txt
       - name: Run Free Studio
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
