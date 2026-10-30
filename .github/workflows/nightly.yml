@@ -1,0 +1,28 @@
+name: VAYNZOX FREE Nightly
+
+on:
+  schedule:
+    - cron: '0 21:00 * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - run: pip install -r requirements.txt
+      - name: Run Free Studio
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+        run: python main.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vaynzox-free-video
+          path: output/
+          retention-days: 7
