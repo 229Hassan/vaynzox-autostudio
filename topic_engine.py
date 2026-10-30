@@ -7,7 +7,7 @@ def get_topic():
         return {"title": "How US Plans to Block China's Internet Cables in 2026", "thumbnail_text": "INTERNET WAR?", "description": "US vs China undersea cable battle that could start WW3. Future tech geopolitics.", "keywords": ["geopolitics", "USA", "China", "tech"], "hook": "The next world war won't start with nukes, but with a cable cut?"}
     
     genai.configure(api_key=api_key)
-    model = genai.GenerativeModel('gemini-1.5-flash')
+    model = genai.GenerativeModel('gemini-2.0-flash')
     prompt = '''
     You are a viral YouTube strategist for US audience for channel VAYNZOX.
     Niche: Merge GEOPOLITICS + FUTURE SCIENCE/DIGITAL TECH (AI, Chips, Quantum, Drones, Cyberwar).
