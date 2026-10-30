@@ -4,7 +4,7 @@ import os, google.generativeai as genai
 def write_script(topic_data):
     api_key = os.getenv("GEMINI_API_KEY")
     genai.configure(api_key=api_key)
-    model = genai.GenerativeModel('gemini-1.5-flash')
+   model = genai.GenerativeModel('gemini-2.0-flash')
     prompt = f'''
     Write a 1000 word YouTube script for VAYNZOX channel.
     Title: {topic_data['title']}
